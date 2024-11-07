@@ -41,13 +41,12 @@ main {
 }
 
 button {
-  border: none;
+  border: 1px solid #f4f4f4;
   border-radius: 30px;
   padding: 12px 24px;
 }
 
 button:hover {
-  border: 1px solid #f4f4f4;
   color: #f4f4f4;
   background: #242424;
 }
