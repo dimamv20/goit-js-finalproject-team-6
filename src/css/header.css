@@ -1,0 +1,148 @@
+/* #region Main */
+.header {
+  margin-top: 16px;
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    margin-bottom: 80px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    margin-bottom: 100px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 96px;
+  }
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.header-logo {
+  width: 132px;
+  height: 24px;
+}
+
+.logo-svg {
+  width: 132px;
+  height: 24px;
+}
+/* #endregion Main */
+
+/* #region Burger */
+.burger-menu {
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+
+  color: var(--color-black);
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.burger-menu-icon {
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+
+  width: 32px;
+  height: 32px;
+}
+/* #endregion Burger */
+
+/* #region Navigation */
+.nav {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.nav-list {
+  display: flex;
+  gap: 6px;
+  padding: 8px 34px;
+
+  background-color: var(--color-black);
+  border-radius: 60px;
+
+  @media screen and (min-width: 1200px) {
+    padding: 8px 50px;
+  }
+}
+
+.nav-item {
+  padding: 6px 12px;
+}
+
+.nav-link {
+  padding: 6px 12px;
+  border-radius: 30px;
+  color: var(--color-grey);
+  background-color: var(--color-black);
+}
+
+.nav-link.active {
+  color: var(--color-black);
+  background-color: var(--color-grey);
+}
+/* #endregion Navigation */
+
+/* #region Socials */
+.soc-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.soc-item {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(36, 36, 36, 0.1);
+  transition: var(--trns);
+  transition-property: background;
+}
+.soc-item:hover,
+.soc-item:focus {
+  background: #242424cc;
+}
+
+.soc-link {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.soc-link .icon {
+  width: 28px;
+  height: 28px;
+  fill: var(--color-black);
+  transition: var(--trns);
+  transition-property: fill;
+}
+
+.soc-item:hover .icon,
+.soc-item:focus .icon {
+  fill: var(--color-grey);
+}
+/* #endregion Socials */
