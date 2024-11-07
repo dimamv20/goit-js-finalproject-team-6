@@ -1,5 +1,6 @@
+/* #region Colors */
 :root {
-  --mobile-width: 375px;
-  --tablet-width: 768px;
-  --desktop-width: 1440px;
+  --color-black: #242424;
+  --color-grey: #f4f4f4;
 }
+/* #endregion Colors */
