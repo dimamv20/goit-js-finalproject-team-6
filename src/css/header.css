@@ -5,11 +5,11 @@
     margin-bottom: 80px;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1440px) {
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
     margin-bottom: 100px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1200px) {
     margin-bottom: 96px;
   }
 }
@@ -77,6 +77,10 @@
 
   background-color: var(--color-black);
   border-radius: 60px;
+
+  @media screen and (min-width: 1200px) {
+    padding: 8px 50px;
+  }
 }
 
 .nav-item {
@@ -111,8 +115,16 @@
 }
 
 .soc-item {
+  cursor: pointer;
+  padding: 8px;
   border-radius: 10px;
   border: 1px solid rgba(36, 36, 36, 0.1);
+  transition: var(--trns);
+  transition-property: background;
+}
+.soc-item:hover,
+.soc-item:focus {
+  background: #242424cc;
 }
 
 .soc-link {
@@ -120,9 +132,17 @@
   width: 28px;
   height: 28px;
 }
+
 .soc-link .icon {
   width: 28px;
   height: 28px;
   fill: var(--color-black);
+  transition: var(--trns);
+  transition-property: fill;
+}
+
+.soc-item:hover .icon,
+.soc-item:focus .icon {
+  fill: var(--color-grey);
 }
 /* #endregion Socials */

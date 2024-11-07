@@ -1,6 +1,8 @@
-/* #region Colors */
 :root {
+  /* Colors */
   --color-black: #242424;
   --color-grey: #f4f4f4;
+
+  /* Others */
+  --trns: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* #endregion Colors */
