@@ -55,6 +55,14 @@ body.modal-open {
   background-color: transparent;
   width: 24px;
   height: 24px;
+  border: 0;
+  padding: 0;
+}
+
+.btn-modal-close:hover {
+  border: none;
+  color: inherit;
+  background: transparent;
 }
 
 @media screen and (min-width: 768px) {
@@ -71,7 +79,6 @@ body.modal-open {
   stroke: var(--white-color);
 }
 
-/* Exercise image */
 .img-modal-exercise {
   object-fit: cover;
   border-radius: 12px;

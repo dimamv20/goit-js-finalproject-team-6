@@ -66,13 +66,3 @@ button:hover {
   pointer-events: none;
   overflow: hidden;
 }
-
-.button-start {
-  background: white;
-  margin-left: auto;
-  font-size: 16px;
-  line-height: 24px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
