@@ -109,6 +109,11 @@ body:has(.menu.is-open) {
 .menu .nav-link:focus {
   transform: scale(1.05) translateY(-1px);
 }
+
+.menu .nav-link.active {
+  color: var(--color-grey);
+  background-color: var(--color-black);
+}
 /* #endregion Navigation */
 
 /* #region Socials */
