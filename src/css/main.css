@@ -1,20 +1,52 @@
+/********************** Exercises section **********************/
 .exercises-row{
   display: flex;
   flex-wrap: wrap;
-  margin-inline: -1rem;
+  margin-inline: -0.5rem;
 }
 
 .exercises-row > * {
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;
-  padding-inline: 1rem;
+  padding-inline: 0.5rem;
 }
-
 
 .exercises__col{
   flex: 0 0 auto;
-  width: 33.33333333%;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.exercises-filters{
+  display: flex;
+  color: #24242499;
+}
+
+.exercises-filters ul{
+  display: flex;
+}
+
+.exercises-filters li{
+  padding: 8px 0px;
+  margin: 0 20px 0 0;
+}
+
+.exercises-filters__selected{
+  color: #242424;
+  position: relative;
+}
+
+.exercises-filters__selected::after{
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: #242424;
+  height: 4px;
+  border-radius: 2px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 .exercises__item{
@@ -23,8 +55,8 @@
   overflow: hidden;
 }
 
-picture,
-img {
+.exercises__item picture,
+.exercises__item img {
   display: block;
   width: 100%;
   height: auto;
@@ -46,9 +78,9 @@ img {
 }
 
 .exercises__item .text-overlay h5 {
-  font-size: 1.5rem;
-  line-height: 1.5rem;
-  margin-bottom: 8px;
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  margin-bottom: 6px;
   font-weight: 400;
   color: #F4F4F4;
 }
@@ -58,3 +90,50 @@ img {
   line-height: 1.125rem;
   color: rgba(244, 244, 244, 0.4);
 }
+
+.exercises-pagination{
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: #D4D4D4;
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+}
+
+.exercises-pagination ul{
+  display: flex;
+}
+
+.exercises-pagination li{
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  border: 1px solid transparent;
+}
+
+.exercises-pagination li.exercises-pagination__current{
+  color: #242424;
+  border-color: #242424;
+}
+
+@media (min-width: 768px) {
+  .exercises__col{
+    width: 33.33333333%;
+  }
+
+  .exercises__item .text-overlay h5 {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .exercises-filters{
+    justify-content: flex-end;
+  }
+}
+/********************** End of Exercises section **********************/
