@@ -10,7 +10,9 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;1,9..40,500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" crossorigin href="/goit-js-finalproject-team-6/assets/styles-DbWlHBXe.css">
+    <script src="./js/menu.js"></script>
+    <script src="./js/nav.js"></script>
+    <link rel="stylesheet" crossorigin href="/goit-js-finalproject-team-6/assets/styles-DfNmHsiG.css">
   </head>
   <body>
     <header class="header">
@@ -21,20 +23,16 @@
       </svg>
     </a>
 
-    <nav class="nav">
-  <ul class="nav-list">
-    <li class="nav-item">
-      <a class="nav-link active" href="./index.html" aria-label="Home page"
-        >Home</a
-      >
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="./favorites.html" aria-label="Favorites page"
-        >Favorites</a
-      >
-    </li>
-  </ul>
-</nav>
+    <ul class="nav-list">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" aria-label="Home page">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./favorites.html" aria-label="Favorites page"
+      >Favorites</a
+    >
+  </li>
+</ul>
 
 <ul class="soc-list">
   <li class="soc-item">
@@ -57,7 +55,7 @@
       target="_blank"
     >
       <svg class="icon">
-        <use class="use" href="/goit-js-finalproject-team-6/assets/sprites-CYaLkvxj.svg#instagram"></use>
+        <use href="/goit-js-finalproject-team-6/assets/sprites-CYaLkvxj.svg#instagram"></use>
       </svg>
     </a>
   </li>
@@ -76,7 +74,12 @@
 </ul>
 
 
-    <button type="button" aria-label="Open menu" class="burger-menu">
+    <button
+      type="button"
+      aria-label="Open menu"
+      class="burger-menu"
+      onclick="toggleMenu('open')"
+    >
       <svg class="burger-menu-icon">
         <use href="/goit-js-finalproject-team-6/assets/sprites-CYaLkvxj.svg#burger"></use>
       </svg>
@@ -98,6 +101,73 @@
     </p>
   </div>
 </footer>
+
+    <div class="menu-backdrop">
+  <div class="menu">
+    <div class="button-wrapper">
+      <button
+        type="button"
+        class="close-btn"
+        aria-label="Close menu"
+        onclick="toggleMenu();"
+      >
+        <svg class="close-btn-icon">
+          <use href="/goit-js-finalproject-team-6/assets/sprites-CYaLkvxj.svg#close"></use>
+        </svg>
+      </button>
+    </div>
+    <ul class="nav-list">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" aria-label="Home page">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./favorites.html" aria-label="Favorites page"
+      >Favorites</a
+    >
+  </li>
+</ul>
+
+<ul class="soc-list">
+  <li class="soc-item">
+    <a
+      href="https://www.facebook.com/goITclub/"
+      class="soc-link"
+      aria-label="Facebook"
+      target="_blank"
+    >
+      <svg class="icon">
+        <use href="/goit-js-finalproject-team-6/assets/sprites-CYaLkvxj.svg#facebook"></use>
+      </svg>
+    </a>
+  </li>
+  <li class="soc-item">
+    <a
+      href="https://www.instagram.com/goitclub/ "
+      class="soc-link"
+      aria-label="Instagram"
+      target="_blank"
+    >
+      <svg class="icon">
+        <use href="/goit-js-finalproject-team-6/assets/sprites-CYaLkvxj.svg#instagram"></use>
+      </svg>
+    </a>
+  </li>
+  <li class="soc-item">
+    <a
+      href="https://www.youtube.com/c/GoIT"
+      class="soc-link"
+      aria-label="Youtube"
+      target="_blank"
+    >
+      <svg class="icon">
+        <use href="/goit-js-finalproject-team-6/assets/sprites-CYaLkvxj.svg#youtube"></use>
+      </svg>
+    </a>
+  </li>
+</ul>
+
+  </div>
+</div>
 
   </body>
 </html>
