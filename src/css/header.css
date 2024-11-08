@@ -64,12 +64,6 @@
 /* #endregion Burger */
 
 /* #region Navigation */
-.nav {
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-}
-
 .nav-list {
   display: flex;
   gap: 6px;
@@ -80,6 +74,9 @@
 
   @media screen and (min-width: 1200px) {
     padding: 8px 50px;
+  }
+  @media screen and (max-width: 767px) {
+    display: none;
   }
 }
 
