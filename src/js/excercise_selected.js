@@ -37,7 +37,7 @@ export async function loadExercises(filter = 'Muscles', page = 1, limit = 12) {
 // Function for rendering data
 export function renderExercises(exercises) {
   const container = document.getElementById('exercises-container');
-  container.innerHTML = ''; // Clear the container before rendering new exercises
+  container.innerHTML = ''; // Очистити контейнер перед рендерингом нових вправ
 
   exercises.forEach(exercise => {
     const exerciseElement = document.createElement('div');
@@ -53,112 +53,89 @@ export function renderExercises(exercises) {
       </div>
     `;
 
-
-    exerciseElement.addEventListener('click', async () => {
-      const dataFilter = exercise.filter;
-      const dataName = exercise.name;
-
-
-      const data = await fetchExerciseDetailsPage(dataFilter, dataName, 1);
-      renderExerciseDetailsPage(data.results);
-  });
-
-
-    container.appendChild(exerciseElement);
-  });
-}
-
-
-
-function renderExerciseDetailsPage(exercises) {
-  const container = document.getElementById('exercises-container');
-  container.innerHTML = ''; 
-
-  exercises.forEach(exerciseDetail => {
-    const exerciseElement = document.createElement('li');
-    exerciseElement.classList.add('exercise-item');
-    exerciseElement.innerHTML = `
-      <div class="exercise-details__item">
-        <div class="exercise-header">
-          <button type="button" class='btn-workout'>WORKOUT</button>
-          <div class="exercise-rating">${exerciseDetail.rating || 'Немає даних'} <span>⭐</span></div>
-          <button type="button" class="btn-start">Start ➔</button>
-        </div>
-        <h3 class="exercise-name">${exerciseDetail.name}</h3>
-        <div class="exercise-info">
-          <p class="truncate-text"<strong class="exercise-info-title">Burned calories:</strong> ${exerciseDetail.burnedCalories}</p>
-          <p class="truncate-text"><strong class="exercise-info-title">Body part:</strong> ${exerciseDetail.bodyPart}</p>
-          <p class="truncate-text"><strong class="exercise-info-title">Target:</strong> ${exerciseDetail.target}</p>
-        </div>
-      </div>
-    `;
-    container.appendChild(exerciseElement);
-});
-
-}
-
-
-function createExercisePagination(totalPages, filter, name) {
-  const paginationContainer = document.querySelector('.exercises-pagination ul');
-  paginationContainer.innerHTML = ''; 
-
-  for (let i = 1; i <= totalPages; i++) {
-    const pageItem = document.createElement('li');
-    pageItem.textContent = i;
-
-
-    if (i === 1) {
-      pageItem.classList.add('exercises-pagination__current');
-    }
-
-
-    pageItem.addEventListener('click', async () => {
-
-      document.querySelectorAll('.exercises-pagination li').forEach(li => {
-        li.classList.remove('exercises-pagination__current');
-      });
-      pageItem.classList.add('exercises-pagination__current');
-
-
-      const data = await fetchExerciseDetailsPage(filter, name, i);
-      renderExerciseDetailsPage(data.results);
+    // Додаємо обробник подій для кліку на кожну вправу
+    exerciseElement.addEventListener('click', () => {
+      fetchExerciseDetails(exercise.filter, exercise.name);
     });
 
-    paginationContainer.appendChild(pageItem);
-  }
+    container.appendChild(exerciseElement);
+  });
 }
 
 
-async function fetchExerciseDetailsPage(filter, name, page = 1) {
+// Функція для запиту до API з параметрами filter та name
+async function fetchExerciseDetails(filter, name) {
+  // Приведення filter до нижнього регістру
+  const lowerCaseFilter = filter.toLowerCase();
 
-  let filterCamelCase = filter.toLowerCase().replace(/\s+/g, '');
-
-
-  if (filterCamelCase.endsWith('ts')) {
-    filterCamelCase = filterCamelCase.slice(0, -1); 
-  }
-
-
-  const encodedName = encodeURIComponent(name);
-
-
-  const url = `https://your-energy.b.goit.study/api/exercises?${filterCamelCase}=${encodedName}&page=${page}&limit=10`;
-
-  //console.log('Запитуваний URL:', url); // Лог для перевірки URL
+  // Формування URL запиту вручну
+  const url = `https://your-energy.b.goit.study/api/exercises?${lowerCaseFilter}=${name}&page=1&limit=10`;
+  console.log('Запитуваний URL:', url); // Лог URL для перевірки
 
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error('Помилка завантаження даних');
 
     const data = await response.json();
-    return data;
+    console.log('Отримані дані:', data); // Лог для виведення даних
+    
+    if (data.results && data.results.length > 0) {
+      renderExerciseDetails(data.results); // Відображаємо, якщо дані доступні
+    } else {
+      renderExerciseDetails([]); // Якщо дані відсутні
+    }
   } catch (error) {
     console.error('Помилка при запиті до API:', error);
-    return { results: [] };
+  }
+}
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Помилка завантаження даних');
+
+    const data = await response.json();
+    
+    // Перевірка кількості вправ
+    if (data.results) {
+      console.log('Кількість отриманих вправ:', data.results.length); // Має бути 10
+      console.log('Отримані дані:', data.results); // Лог для перевірки даних
+    }
+    
+    if (data.results && data.results.length > 0) {
+      renderExerciseDetails(data.results); // Відображаємо, якщо дані доступні
+    } else {
+      renderExerciseDetails([]); // Якщо дані відсутні
+    }
+  } catch (error) {
+    console.error('Помилка при запиті до API:', error);
+  }
+
+
+// Функція для відображення деталей обраної вправи
+function renderExerciseDetails(exerciseData) {
+  const detailsContainer = document.getElementById('exercise-details');
+  detailsContainer.innerHTML = '';
+
+  if (exerciseData.length > 0) {
+    const exerciseDetail = exerciseData[0];
+
+    detailsContainer.innerHTML = `
+      <div class="exercise-details__item">
+        <h3>${exerciseDetail.name}</h3>
+        <p><strong>Rate:</strong> ${exerciseDetail.rating || 'Немає даних'}</p>
+        <p><strong>Body Part:</strong> ${exerciseDetail.bodyPart}</p>
+        <p><strong>target</strong> ${exerciseDetail.target}</p>
+        <p><strong>burned Calories</strong> ${exerciseDetail.burnedCalories}</p>
+
+      </div>
+    `;
+  } else {
+    detailsContainer.innerHTML = '<p>Інформація недоступна</p>';
   }
 }
 
 
+// Events for filters
 export function initializeFilters() {
   const filterItems = document.querySelectorAll('.exercises-filters ul li');
   filterItems.forEach(item => {
