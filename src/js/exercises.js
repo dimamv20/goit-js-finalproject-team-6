@@ -37,7 +37,7 @@ export async function loadExercises(filter = 'Muscles', page = 1, limit = 12) {
 // Function for rendering data
 export function renderExercises(exercises) {
   const container = document.getElementById('exercises-container');
-  container.innerHTML = ''; // Clear the container before rendering new exercises
+  container.innerHTML = '';
 
   exercises.forEach(exercise => {
     const exerciseElement = document.createElement('div');
